@@ -52,11 +52,11 @@ void polynom_to_string(int coeff[], int exp[], char s[])
     int j, counter, k, d, a;
     char temp[sizeof(coeff)] = 0 ; 
 
-    for (i = 0; i < sizeof(coeff), i < sizeof(expo); i++)
+    for (i = 0; i < sizeof(coeff), i < sizeof(exp); i++)
     {
         if (coeff[i] < 10)
         {
-            char s[i] = coeff[i] + '0';
+            s[i] = coeff[i] + '0';
         }
         else if (coeff[i] > 10 || coeff[i] == 10)
         {
@@ -67,11 +67,19 @@ void polynom_to_string(int coeff[], int exp[], char s[])
                 k = input % j;
                 a = k / d ; 
                 temp[counter] = a ; 
-                input -= k ; 
+                input = input - k ; 
+                temp[counter + 1] = '\0';
                 counter++; 
-                i *= 10 ; 
+                j *= 10 ; 
                 d *= 10 ; 
+                 
             }
+            int p,q; 
+            for(p = 0 , q = (sizeof(temp) - 1) ; q >=0  ; q-- , p++){
+                s[p] = temp[q] ; 
+            }
+            
+            
         }
     }
 
