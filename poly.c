@@ -47,8 +47,33 @@ void polynom_to_string(int coeff[], int exp[], char s[])
 {
 
     /* ADD YOUR CODE HERE */
+    int i;
+    int input;
+    int j, counter, k, d, a;
+    char temp[sizeof(coeff)] = 0 ; 
 
-    
+    for (i = 0; i < sizeof(coeff), i < sizeof(expo); i++)
+    {
+        if (coeff[i] < 10)
+        {
+            char s[i] = coeff[i] + '0';
+        }
+        else if (coeff[i] > 10 || coeff[i] == 10)
+        {
+            j = 10, counter = 0, d = 1;
+            input = coeff[i];
+            while (input != 0)
+            {
+                k = input % j;
+                a = k / d ; 
+                temp[counter] = a ; 
+                input -= k ; 
+                counter++; 
+                i *= 10 ; 
+                d *= 10 ; 
+            }
+        }
+    }
 
 } /* end polynom_to_string */
 
