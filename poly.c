@@ -66,7 +66,7 @@ void polynom_to_string(int coeff[], int exp[], char s[])
             {
                 k = input % j;
                 a = k / d ; 
-                temp[counter] = a ; 
+                temp[counter] = a + '0'; 
                 input = input - k ; 
                 temp[counter + 1] = '\0';
                 counter++; 
