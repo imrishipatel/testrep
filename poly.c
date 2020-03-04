@@ -31,9 +31,11 @@ void get_polynom(int coeff[], int exp[])
 {
 
     /* ADD YOUR CODE HERE */
-    int i ; 
-    for(i = 0 ; i < ASIZE ; i++){
-        scanf("%d \n %d \n"coeff[i] , expo[i]) ; 
+    int i, not;
+    scanf("%d ", &not);
+    for (i = 0; i < not; i++)
+    {
+        scanf("%d  %d ", coeff[i], exp[i]);
     }
 
 } /* end get_polynom */
