@@ -48,6 +48,8 @@ void polynom_to_string(int coeff[], int exp[], char s[])
 
     /* ADD YOUR CODE HERE */
 
+    
+
 } /* end polynom_to_string */
 
 /*
