@@ -11,26 +11,30 @@
 
 /*****  YOU MAY ADD YOUR OWN FUNCTION(S) HERE.  *****/
 
-int strInt(char s[])
+int strInt(char *s)
 {
-  int i, n = 0;
+  int i = 0, n = 0;
+  int sign;
 
-  for (i = 1; s[i] >= '-' && s[i] <= '9'; i++)
+  if (s[i] == '-')
   {
-
-    if (s[i] == '-')
-    {
-      n = n * 10 + (s[i + 1] - '0');
-      n = (-1) * n;
-      i++; 
-    }
-    else
-    {
-      n = n * 10 + (s[i] - '0');
-    }
+    sign = -1;
+    i++;
   }
 
-  return n;
+  for (; s[i] != '\0'; i++)
+  {
+    n = n * 10 + (s[i] - '0');
+  }
+
+  if (sign == -1)
+  {
+    return n * (sign);
+  }
+  else
+  {
+    return n;
+  }
 }
 
 /* Function main()
@@ -38,7 +42,7 @@ int strInt(char s[])
    Output: the maximum, minimum and average of the above set displayed on the standard output.
  */
 
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
   int max, min;
   float avg;
@@ -46,42 +50,38 @@ main(int argc, char *argv[])
   /*****************************************/
   /***** ADD YOUR CODE BELOW THIS LINE *****/
 
-  int i, sum = 0;
+  int i, op, sum = 0;
+
+  max = min = strInt(argv[1]);
+
   
-  
-  max = strInt(argv[1]);
-  min = strInt(argv[1]);
-
-  if (argc > 0)
-  {
-
-    for (i = 2; i <= (argc - 1) ; i++)
-    {
-      if (*argv[i] >= '-' && *argv[i] <= '9')
-      {
-        sum += strInt(argv[i]);
-      }
-
-      if (strInt(argv[i]) > max)
-      {
-        max = strInt(argv[i]);
-      }
-
-      if (strInt(argv[i]) < min)
-      {
-        min = strInt(argv[i]);
-      }
-    }
-  }
-  else
+  if(argc == 1)
   {
     printf("Usage: mmavg int1 int2 int3 ...\n");
     exit(0);
   }
+  else{
+    
 
-  avg = sum / (argc);
+    for (i = 2; i < argc; i++)
+    {
+      op = strInt(argv[i]);
 
+      if (op > max)
+      {
+        max = op;
+      }
+      if (op < min)
+      {
+        min = op;
+      }
+
+      sum = sum + op;
+    }
   
+  }
+
+  avg = sum / (argc - 1);
 
   /***** ADD YOUR CODE ABOVE THIS LINE *****/
   /*****************************************/
